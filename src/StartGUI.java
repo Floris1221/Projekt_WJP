@@ -63,6 +63,7 @@ public class StartGUI extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.add(CardPanel);
         this.setSize(700,1000);
+        ImageIcon one = new ImageIcon("1.png");
 
 
         nowicjuszButton.addActionListener(new ActionListener() {
