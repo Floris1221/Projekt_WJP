@@ -100,6 +100,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="008-three.png"/>
                   <text value=""/>
@@ -112,6 +113,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="002-four.png"/>
                   <text value=""/>
@@ -124,6 +126,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="009-five.png"/>
                   <text value=""/>
@@ -136,6 +139,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="005-eight.png"/>
                   <text value=""/>
@@ -148,6 +152,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="003-six.png"/>
                   <text value=""/>
@@ -160,6 +165,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="004-seven.png"/>
                   <text value=""/>
@@ -172,6 +178,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="006-nine.png"/>
                   <text value=""/>
@@ -182,6 +189,7 @@
                   <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <enabled value="false"/>
                   <text value="Button"/>
                 </properties>
               </component>
@@ -190,6 +198,7 @@
                   <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <enabled value="false"/>
                   <text value="Button"/>
                 </properties>
               </component>
@@ -216,6 +225,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <focusTraversalPolicyProvider value="false"/>
                   <focusable value="true"/>
@@ -231,6 +241,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="008-three.png"/>
                   <text value=""/>
@@ -243,6 +254,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="009-five.png"/>
                   <text value=""/>
@@ -255,6 +267,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="004-seven.png"/>
                   <text value=""/>
@@ -267,6 +280,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="006-nine.png"/>
                   <text value=""/>
@@ -279,6 +293,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="001-two.png"/>
                   <text value=""/>
@@ -291,6 +306,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="002-four.png"/>
                   <text value=""/>
@@ -303,6 +319,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="003-six.png"/>
                   <text value=""/>
@@ -315,6 +332,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="005-eight.png"/>
                   <text value=""/>
@@ -325,6 +343,7 @@
                   <grid row="12" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <enabled value="false"/>
                   <text value="Button"/>
                 </properties>
               </component>
@@ -333,6 +352,7 @@
                   <grid row="13" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <enabled value="false"/>
                   <text value="Button"/>
                 </properties>
               </component>
@@ -351,6 +371,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="one.png"/>
                   <text value=""/>
@@ -363,6 +384,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="008-three.png"/>
                   <text value=""/>
@@ -375,6 +397,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="009-five.png"/>
                   <text value=""/>
@@ -387,6 +410,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="004-seven.png"/>
                   <text value=""/>
@@ -399,6 +423,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="006-nine.png"/>
                   <text value=""/>
@@ -409,6 +434,7 @@
                   <grid row="20" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <enabled value="false"/>
                   <text value="Button"/>
                 </properties>
               </component>
@@ -417,6 +443,7 @@
                   <grid row="19" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <enabled value="false"/>
                   <text value="Button"/>
                 </properties>
               </component>
@@ -427,6 +454,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="005-eight.png"/>
                   <text value=""/>
@@ -439,6 +467,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="002-four.png"/>
                   <text value=""/>
@@ -451,6 +480,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="003-six.png"/>
                   <text value=""/>
@@ -463,6 +493,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="001-two.png"/>
                   <text value=""/>
@@ -483,6 +514,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="one.png"/>
                   <text value=""/>
@@ -495,6 +527,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="008-three.png"/>
                   <text value=""/>
@@ -507,6 +540,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="009-five.png"/>
                   <text value=""/>
@@ -519,6 +553,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="004-seven.png"/>
                   <text value=""/>
@@ -531,6 +566,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="001-two.png"/>
                   <text value=""/>
@@ -543,6 +579,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <icon value="006-nine.png"/>
                   <text value=""/>
                 </properties>
@@ -552,6 +589,7 @@
                   <grid row="27" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <enabled value="false"/>
                   <text value="Button"/>
                 </properties>
               </component>
@@ -560,6 +598,7 @@
                   <grid row="26" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <enabled value="false"/>
                   <text value="Button"/>
                 </properties>
               </component>
@@ -570,6 +609,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="005-eight.png"/>
                   <text value=""/>
@@ -582,6 +622,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="003-six.png"/>
                   <text value=""/>
@@ -609,6 +650,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="001-two.png"/>
                   <text value=""/>
@@ -621,6 +663,7 @@
                 <properties>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <enabled value="false"/>
                   <focusPainted value="false"/>
                   <icon value="002-four.png"/>
                   <text value=""/>

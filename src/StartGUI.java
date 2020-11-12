@@ -63,7 +63,7 @@ public class StartGUI extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.add(CardPanel);
         this.setSize(700,1000);
-        ImageIcon one = new ImageIcon("1.png");
+        this.setVisible(true);
 
 
         nowicjuszButton.addActionListener(new ActionListener() {
@@ -94,5 +94,31 @@ public class StartGUI extends JFrame {
                 panel1.setVisible(false);
             }
         });
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Task1 task1 = new Task1();
+
+
+            }
+        });
+        button3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Task1 task1 = new Task1();
+            }
+        });
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Task1 task1 = new Task1();
+            }
+        });
+        button4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Task1 task1 = new Task1();
+            }
+        });
     }//StartGUI
-}
+}//StartGUI class
