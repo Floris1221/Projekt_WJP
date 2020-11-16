@@ -1,7 +1,8 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class StartGUI extends JFrame {
     private JPanel CardPanel;
@@ -22,7 +23,6 @@ public class StartGUI extends JFrame {
     private JButton button7;
     private JButton button8;
     private JButton button9;
-    private JButton button10;
     private JButton button11;
     private JButton button12;
     private JButton button13;
@@ -34,13 +34,11 @@ public class StartGUI extends JFrame {
     private JButton button19;
     private JButton button20;
     private JButton button21;
-    private JButton button22;
     private JButton button23;
     private JButton button24;
     private JButton button25;
     private JButton button26;
     private JButton button27;
-    private JButton button28;
     private JButton button29;
     private JButton button30;
     private JButton button31;
@@ -57,6 +55,9 @@ public class StartGUI extends JFrame {
     private JButton button42;
     private JButton button43;
     private JButton button44;
+    ArrayList<JButton> buttons = new ArrayList<JButton>();
+    String coment;
+
 
     StartGUI(){
         super("Językomania");
@@ -64,6 +65,7 @@ public class StartGUI extends JFrame {
         this.add(CardPanel);
         this.setSize(700,1000);
         this.setVisible(true);
+        buttons.addAll(Arrays.asList(button1,button2,button3,button4,button5,button6,button7,button8,button9,button11,button12,button13,button14,button15,button16,button17,button18,button19,button20,button21,button23,button24,button25,button26,button27,button29,button30,button31,button32,button33,button34,button35,button36,button37,button38,button39,button40,button41,button42,button43,button44));
 
 
         nowicjuszButton.addActionListener(new ActionListener() {
@@ -78,6 +80,10 @@ public class StartGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 panel2.setVisible(true);
                 panel1.setVisible(false);
+                for(int i=0;i<10;i++){
+                    buttons.get(i).setEnabled(true);
+                }
+
             }
         });
         sredniozaawansowanyButton.addActionListener(new ActionListener() {
@@ -85,6 +91,9 @@ public class StartGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 panel2.setVisible(true);
                 panel1.setVisible(false);
+                for(int i=0;i<20;i++){
+                    buttons.get(i).setEnabled(true);
+                }
             }
         });
         zaawansowanyButton.addActionListener(new ActionListener() {
@@ -92,6 +101,9 @@ public class StartGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 panel2.setVisible(true);
                 panel1.setVisible(false);
+                for(int i=0;i<30;i++){
+                    buttons.get(i).setEnabled(true);
+                }
             }
         });
         button1.addActionListener(new ActionListener() {
