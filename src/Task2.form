@@ -24,15 +24,6 @@
           <text value="Info"/>
         </properties>
       </component>
-      <component id="5e32" class="javax.swing.JButton" binding="nastepneButton" default-binding="true">
-        <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <enabled value="false"/>
-          <text value="Nastepne"/>
-        </properties>
-      </component>
       <component id="e01c7" class="javax.swing.JButton" binding="odpowiedzButton" default-binding="true">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -41,7 +32,7 @@
           <text value="Odpowiedz"/>
         </properties>
       </component>
-      <component id="65caf" class="javax.swing.JLabel" binding="zadanie">
+      <component id="65caf" class="javax.swing.JLabel" binding="label1">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -49,7 +40,7 @@
           <text value="Zadanie"/>
         </properties>
       </component>
-      <component id="f011a" class="javax.swing.JLabel" binding="pytanie">
+      <component id="f011a" class="javax.swing.JLabel" binding="label2">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -58,6 +49,15 @@
           <horizontalTextPosition value="0"/>
           <text value="Label"/>
           <visible value="true"/>
+        </properties>
+      </component>
+      <component id="5e32" class="javax.swing.JButton" binding="nastepneButton" default-binding="true">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <enabled value="false"/>
+          <text value="Nastepne"/>
         </properties>
       </component>
     </children>
