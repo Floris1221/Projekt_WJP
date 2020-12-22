@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public class StartGUI extends JFrame {
     private JPanel CardPanel;
-    private JPanel panel1;
+    public JPanel panel1;
     public JLabel label1;
     private JButton nowicjuszButton;
     private JButton początkującyButton;

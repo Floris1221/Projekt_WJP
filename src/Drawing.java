@@ -23,7 +23,7 @@ public class Drawing {
             }
         }
 
-        g.drawImage(img,0,0,null);
+        g.drawImage(img,0,0,f.panel1);
         //g.drawLine(10,10,50,60);
         return g;
     }

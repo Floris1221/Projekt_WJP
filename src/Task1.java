@@ -6,7 +6,7 @@ import java.net.URL;
 
 public class Task1 extends JFrame {
 
-    public JPanel Task1;
+    public JPanel panel;
     public JButton button1;
     public JButton button2;
     public JButton button3;
@@ -26,7 +26,7 @@ public class Task1 extends JFrame {
 
     Task1(){
         exist=1;
-        this.add(Task1);
+        this.add(panel);
         this.setSize(850,600);
 
         this.addWindowListener(new WindowAdapter() {

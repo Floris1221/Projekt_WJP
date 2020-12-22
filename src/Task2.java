@@ -8,11 +8,12 @@ import java.io.IOException;
 public class Task2 extends JFrame {
     public JPanel panel;
     private JTextField textField1;
-    private JButton infoButton;
+    private JButton menuButton;
     public JButton nastepneButton;
     private JButton odpowiedzButton;
     public JLabel label1;
     public JLabel label2;
+    private JButton infoButton;
     public static int exist;
     String odp;
 
