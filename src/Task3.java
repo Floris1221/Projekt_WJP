@@ -14,20 +14,21 @@ public class Task3 extends JFrame {
     private JButton odpowiedzButton = new JButton("Odpowiedź");
     private JButton infoButton = new JButton("Info");
     private JPanel panel1 = new JPanel();
+    private  JButton sprawdzButton = new JButton("SPRAWDZ");
     public ArrayList <JLabel> labels = new ArrayList<JLabel>();
     public  ArrayList <Integer> correctAnswer = new ArrayList<Integer>();
-    public static int exist = 0;
     private Point pointPressed;
     public int k;
     public int x;
     public int x1;
     public Dimension d;
+    boolean test;
 
 
 
-    Task3(int nbol,int nastepne) {
+    Task3(int nbol,int nastepne,boolean test) {
         super("Zadanie");
-        exist = 1;
+        this.test = test;
         d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setResizable(false);
         this.setSize(d);
@@ -59,16 +60,33 @@ public class Task3 extends JFrame {
         nastepneButton.setSize(280,80);
         nastepneButton.setFont(new Font("Calibri",Font.BOLD,28));
         nastepneButton.setEnabled(false);
+        nastepneButton.setFocusPainted(false);
+        if(test)
+            nastepneButton.setVisible(false);
 
 
         odpowiedzButton.setLocation(10,d.height-130);
         odpowiedzButton.setSize(280,80);
         odpowiedzButton.setFont(new Font("Calibri",Font.BOLD,28));
+        odpowiedzButton.setFocusPainted(false);
+        if(test)
+            odpowiedzButton.setVisible(false);
+
+
+        sprawdzButton.setLocation((nastepneButton.getX()-odpowiedzButton.getX())/2,d.height-150);
+        sprawdzButton.setSize(300,100);
+        sprawdzButton.setFont(new Font("Calibri",Font.BOLD,28));
+        sprawdzButton.setEnabled(false);
+        sprawdzButton.setFocusPainted(false);
+        sprawdzButton.setVisible(false);
+        if(test)
+            sprawdzButton.setVisible(true);
 
 
         infoButton.setLocation(d.width-110,30);
         infoButton.setSize(100,55);
         infoButton.setFont(new Font("Calibri",Font.BOLD,20));
+        infoButton.setFocusPainted(false);
 
 
 
@@ -90,7 +108,6 @@ public class Task3 extends JFrame {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
-                exist = 0;
             }
         });
 
@@ -100,7 +117,6 @@ public class Task3 extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 Main.f.m.buttons.get(nastepne).setEnabled(true);
-                exist=0;
             }
         });
 
@@ -123,6 +139,50 @@ public class Task3 extends JFrame {
             }
         });
 
+        sprawdzButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                boolean corect = false;
+
+                for(int i =0;i<labels.size()-1;i++){
+                    if(labels.get(correctAnswer.get(i)).getX()<labels.get(correctAnswer.get(i+1)).getX()){
+                        corect=true;
+                    }else {
+                        corect=false;
+                        break;
+                    }
+                }
+
+                if (corect){
+                    Main.f.m.pktTest =Main.f.m.pktTest + 75;
+                    Menu.monney =Menu.monney + 75;
+                }
+                for(int i=9;i<Main.f.m.buttons.size();){
+                    if(Main.f.m.buttons.get(i).isVisible()){
+
+                    }else{
+                        int p=0;
+                        switch (i){
+                            case  9: {p=254; break;}
+                            case  19: {p=704; break;}
+                            case  29: {p=1096; break;}
+                            case  39: {p=1604; break;}
+                        }
+                        if(Main.f.m.pktTest>p) {
+                            Main.f.m.buttons.get(i).setVisible(true);
+                            Main.f.m.buttons.get(i + 1).setEnabled(true);
+                        }
+                    }
+                    i=i+10;
+                }
+
+
+                dispose();
+
+
+            }
+        });
+
 
     }//Task 3 kon
 
@@ -139,6 +199,7 @@ public class Task3 extends JFrame {
             tlo.add(labels.get(i));
             x1=x1+k;
         }
+        tlo.add(sprawdzButton);
         tlo.add(infoButton);
         tlo.add(odpowiedzButton);
         tlo.add(nastepneButton);
@@ -199,6 +260,14 @@ public class Task3 extends JFrame {
                         break;
                     }
                 }
+
+                if (Allinpanel){
+                    sprawdzButton.setEnabled(true);
+                }else{
+                    sprawdzButton.setEnabled(false);
+                }
+
+
                 for(int i =0;i<labels.size()-1;i++){
                     if(labels.get(correctAnswer.get(i)).getX()<labels.get(correctAnswer.get(i+1)).getX() && Allinpanel){
                         corect=true;

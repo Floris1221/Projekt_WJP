@@ -23,11 +23,11 @@ public class Task1 extends JFrame {
     Icon yes = new ImageIcon(url1);
     Icon no = new ImageIcon(url2);
     String odpowiedz;
-    public static int  exist=0;
+    boolean test;
 
-    Task1(int nastepne){
+    Task1(int nastepne,boolean test){
         super("Zadanie");
-        exist=1;
+        this.test=test;
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setResizable(false);
         this.setSize(d);
@@ -68,16 +68,21 @@ public class Task1 extends JFrame {
         nastepneButton.setSize(280,80);
         nastepneButton.setFont(new Font("Calibri",Font.BOLD,28));
         nastepneButton.setEnabled(false);
+        nastepneButton.setFocusPainted(false);
 
 
         odpowiedzButton.setLocation(10,d.height-130);
         odpowiedzButton.setSize(280,80);
         odpowiedzButton.setFont(new Font("Calibri",Font.BOLD,28));
+        odpowiedzButton.setFocusPainted(false);
+        if(test)
+            odpowiedzButton.setVisible(false);
 
 
         infoButton.setLocation(d.width-110,30);
         infoButton.setSize(100,55);
         infoButton.setFont(new Font("Calibri",Font.BOLD,20));
+        infoButton.setFocusPainted(false);
 
 
 
@@ -96,7 +101,6 @@ public class Task1 extends JFrame {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
-                exist=0;
             }
         });
 
@@ -104,9 +108,28 @@ public class Task1 extends JFrame {
         nastepneButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
                 Main.f.m.buttons.get(nastepne).setEnabled(true);
-                exist=0;
+                if(test){
+                        for(int i=9;i<Main.f.m.buttons.size();){
+                            if(Main.f.m.buttons.get(i).isVisible()){
+
+                            }else{
+                                int p=0;
+                                switch (i){
+                                    case  9: {p=254; break;}
+                                    case  19: {p=704; break;}
+                                    case  29: {p=1096; break;}
+                                    case  39: {p=1604; break;}
+                                }
+                                if(Main.f.m.pktTest>p) {
+                                    Main.f.m.buttons.get(i).setVisible(true);
+                                    Main.f.m.buttons.get(i + 1).setEnabled(true);
+                                }
+                            }
+                                i=i+10;
+                        }
+                    }
+                dispose();
             }
         });
 

@@ -79,6 +79,7 @@ public class StartGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 m = new Menu();
+                m.pktTest=0;
                 for(int i=1;i<m.buttons.size();i++){
                     m.buttons.get(i).setEnabled(false);
                 }
@@ -92,6 +93,7 @@ public class StartGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 m = new Menu();
+                m.pktTest=450;
                 for(int i=11;i<m.buttons.size();i++){
                     m.buttons.get(i).setEnabled(false);
                 }
@@ -102,6 +104,7 @@ public class StartGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 m = new Menu();
+                m.pktTest=900;
                 for(int i=21;i<m.buttons.size();i++){
                     m.buttons.get(i).setEnabled(false);
                 }
@@ -111,6 +114,7 @@ public class StartGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 m = new Menu();
+                m.pktTest=1350;
                 for(int i=31;i<m.buttons.size();i++){
                     m.buttons.get(i).setEnabled(false);
                 }

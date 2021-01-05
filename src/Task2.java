@@ -8,19 +8,19 @@ public class Task2 extends JFrame {
     URL url = getClass().getResource("/grass.jpg");
     ImageIcon img = new ImageIcon(url);
     private JTextField textField1=new JTextField();
-    private JButton menuButton = new JButton();
     public JButton nastepneButton = new JButton("Następne");
     private JButton odpowiedzButton = new JButton("Odpowieź");
     public JLabel label1 = new JLabel();
     public JLabel label2 = new JLabel();
     private JButton infoButton = new JButton("Info");
     private JLabel tlo = new JLabel();
-    public static int exist=0;
+    private  JButton sprawdzButton = new JButton("SPRAWDZ");
     String odp;
+    boolean test;
 
-    Task2(int nastepne){
+    Task2(int nastepne,boolean test){
         super("Zadanie");
-        exist=1;
+        this.test = test;
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setResizable(false);
         this.setSize(d);
@@ -48,6 +48,10 @@ public class Task2 extends JFrame {
         nastepneButton.setSize(280,80);
         nastepneButton.setFont(new Font("Calibri",Font.BOLD,28));
         nastepneButton.setEnabled(false);
+        nastepneButton.setFocusPainted(false);
+        if(test)
+            nastepneButton.setVisible(false);
+
 
 
         textField1.setLocation(0,d.height/2);
@@ -60,15 +64,30 @@ public class Task2 extends JFrame {
         odpowiedzButton.setLocation(10,d.height-130);
         odpowiedzButton.setSize(280,80);
         odpowiedzButton.setFont(new Font("Calibri",Font.BOLD,28));
+        odpowiedzButton.setFocusPainted(false);
+        if(test)
+            odpowiedzButton.setVisible(false);
+
+
+        sprawdzButton.setLocation((nastepneButton.getX()-odpowiedzButton.getX())/2,d.height-150);
+        sprawdzButton.setSize(300,100);
+        sprawdzButton.setFont(new Font("Calibri",Font.BOLD,28));
+        sprawdzButton.setFocusPainted(false);
+        sprawdzButton.setVisible(false);
+        if(test)
+            sprawdzButton.setVisible(true);
+
 
 
         infoButton.setLocation(d.width-110,30);
         infoButton.setSize(100,55);
         infoButton.setFont(new Font("Calibri",Font.BOLD,20));
+        infoButton.setFocusPainted(false);
 
 
 
 
+        tlo.add(sprawdzButton);
         tlo.add(infoButton);
         tlo.add(odpowiedzButton);
         tlo.add(textField1);
@@ -81,7 +100,6 @@ public class Task2 extends JFrame {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
-                exist=0;
             }
         });
 
@@ -105,7 +123,6 @@ public class Task2 extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 Main.f.m.buttons.get(nastepne).setEnabled(true);
-                exist=0;
             }
         });
 
@@ -120,6 +137,37 @@ public class Task2 extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null,odp);
+            }
+        });
+
+
+        sprawdzButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(textField1.getText().toLowerCase().equals(odp)) {
+                    Main.f.m.pktTest = Main.f.m.pktTest + 75;
+                    Menu.monney = Menu.monney + 75;
+                }
+                    for(int i=9;i<Main.f.m.buttons.size();){
+                        if(Main.f.m.buttons.get(i).isVisible()){
+
+                        }else{
+                            int p=0;
+                            switch (i){
+                                case  9: {p=254; break;}
+                                case  19: {p=704; break;}
+                                case  29: {p=1096; break;}
+                                case  39: {p=1604; break;}
+                            }
+                            if(Main.f.m.pktTest>p) {
+                                Main.f.m.buttons.get(i).setVisible(true);
+                                Main.f.m.buttons.get(i + 1).setEnabled(true);
+                            }
+                        }
+                        i=i+10;
+                    }
+                dispose();
+
             }
         });
 
