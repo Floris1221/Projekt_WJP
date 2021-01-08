@@ -36,7 +36,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 /* ScrollablePicture.java is used by ScrollDemo.java. */
-
+//Rysowanie ScrollPanel
 public class ScrollablePicture extends JLabel
         implements Scrollable,
         MouseMotionListener {

@@ -3,9 +3,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Task3 extends JFrame {
-    URL url = getClass().getResource("/grass.jpg");
+    URL url = getClass().getResource("/Zad3.jpg");
     ImageIcon img = new ImageIcon(url);
     JLabel tlo = new JLabel(img);
     public JLabel label1 = new JLabel();
@@ -13,26 +15,45 @@ public class Task3 extends JFrame {
     public JButton nastepneButton = new JButton("Następne");
     private JButton odpowiedzButton = new JButton("Odpowiedź");
     private JButton infoButton = new JButton("Info");
+    private JButton hint1 = new JButton("+20 sekund");
+    private JButton hint2 = new JButton("Następna kafelka");
     private JPanel panel1 = new JPanel();
     private  JButton sprawdzButton = new JButton("SPRAWDZ");
+    public static JButton helpButton = new JButton();
     public ArrayList <JLabel> labels = new ArrayList<JLabel>();
     public  ArrayList <Integer> correctAnswer = new ArrayList<Integer>();
     private Point pointPressed;
+    URL url3 = getClass().getResource("/wood3.png");
     public int k;
     public int x;
     public int x1;
     public Dimension d;
     boolean test;
+    JProgressBar progres = new JProgressBar();
+    Timer timer;
+    int h = 0;
+    String s ="";
+    public static int podpowiedz;
+    URL url10 = getClass().getResource("/chest.png");
+    ImageIcon chest=new ImageIcon(new ImageIcon(url10).getImage().getScaledInstance(100,90,Image.SCALE_AREA_AVERAGING));
+    private JButton sklep = new JButton("SKLEP",chest);
+    URL url15 = getClass().getResource("/coin.png");
+    ImageIcon coin=new ImageIcon(new ImageIcon(url15).getImage().getScaledInstance(70,50,Image.SCALE_AREA_AVERAGING));
+    private JLabel label5 = new JLabel(coin);
+    Timer Label5Chech = new Timer();
+    String txtLabel5;
 
 
 
-    Task3(int nbol,int nastepne,boolean test) {
+    Task3(int nbol,int nastepne,boolean test) {//Ogólne ustawienia okienka i elementów
         super("Zadanie");
         this.test = test;
         d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setResizable(false);
         this.setSize(d);
         this.setVisible(true);
+        podpowiedz=1;
+        Label5Chech.schedule(Label5_task,0,500);
 
 
         panel1.setSize(d.width, d.height / 5);
@@ -43,12 +64,10 @@ public class Task3 extends JFrame {
         label1.setFont(new Font("Calibri",Font.BOLD,24));
         label1.setSize(300,30);
         label1.setLocation(10,30);
-        label1.setForeground(Color.WHITE);
 
         label2.setFont(new Font("Calibri",Font.BOLD,34));
         label2.setSize(d.width,50);
         label2.setLocation(0,d.height/2-250);
-        label2.setForeground(Color.WHITE);
         label2.setHorizontalAlignment(SwingConstants.CENTER);
         label2.setVerticalAlignment(SwingConstants.CENTER);
         label2.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -84,9 +103,71 @@ public class Task3 extends JFrame {
 
 
         infoButton.setLocation(d.width-110,30);
-        infoButton.setSize(100,55);
+        infoButton.setSize(100,60);
         infoButton.setFont(new Font("Calibri",Font.BOLD,20));
         infoButton.setFocusPainted(false);
+
+
+        sklep.setSize(200,110);
+        sklep.setFont(new Font("Calibri",Font.BOLD,24));
+        sklep.setForeground(Color.YELLOW);
+        sklep.setHorizontalTextPosition(SwingConstants.CENTER);
+        sklep.setVerticalTextPosition(SwingConstants.BOTTOM);
+        sklep.setLocation(infoButton.getX()-200,20);
+        sklep.setContentAreaFilled(false);
+        sklep.setFocusPainted(false);
+        sklep.setBorderPainted(false);
+        if(test)
+            sklep.setVisible(false);
+
+        label5.setSize(200,110);
+        label5.setFont(new Font("Calibri",Font.BOLD,24));
+        label5.setForeground(Color.YELLOW);
+        label5.setLocation(sklep.getX()-200,20);
+        if(test)
+            label5.setVisible(false);
+
+
+        sklep.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Shop s = new Shop();
+            }
+        });
+
+
+        hint1.setLocation(d.width-190,infoButton.getY()+60);
+        hint1.setSize(180,60);
+        hint1.setFont(new Font("Calibri",Font.BOLD,20));
+        hint1.setFocusPainted(false);
+        hint1.setVisible(false);
+        hint1.setEnabled(false);
+        if(test)
+            hint1.setVisible(true);
+        if(Menu.helper1>0)
+            hint1.setEnabled(true);
+
+
+
+        hint2.setLocation(d.width-190,infoButton.getY()+120);
+        hint2.setSize(180,60);
+        hint2.setFont(new Font("Calibri",Font.BOLD,20));
+        hint2.setFocusPainted(false);
+        hint2.setVisible(false);
+        hint2.setEnabled(false);
+        if(test)
+            hint2.setVisible(true);
+        if(Menu.helper4>0)
+            hint2.setEnabled(true);
+
+
+
+        progres.setSize(d.width/3,20);
+        progres.setLocation(d.width/3,30);
+        progres.setMaximum(60);
+        progres.setForeground(Color.GREEN);
+        progres.setStringPainted(true);
+        progres.setVisible(false);
 
 
 
@@ -111,7 +192,7 @@ public class Task3 extends JFrame {
             }
         });
 
-
+        //jak w Task1
         nastepneButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -120,14 +201,14 @@ public class Task3 extends JFrame {
             }
         });
 
-
+        //jak w Task1
         infoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null,"Wpisz przetłumaczone słowo lub zdanie");
             }
         });
-
+        //jak w Task1
         odpowiedzButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -138,12 +219,13 @@ public class Task3 extends JFrame {
                 JOptionPane.showMessageDialog(null,odpowiedz);
             }
         });
-
+        //Tylko dla testu
         sprawdzButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 boolean corect = false;
 
+                //Sprawdzenie czy poprawna odpowiedz
                 for(int i =0;i<labels.size()-1;i++){
                     if(labels.get(correctAnswer.get(i)).getX()<labels.get(correctAnswer.get(i+1)).getX()){
                         corect=true;
@@ -152,10 +234,11 @@ public class Task3 extends JFrame {
                         break;
                     }
                 }
-
+                //jesli tak dodanie punktów
                 if (corect){
                     Main.f.m.pktTest =Main.f.m.pktTest + 75;
-                    Menu.monney =Menu.monney + 75;
+                    Menu.monney =Menu.monney + 100;
+                    Results.coins = Results.coins+100;
                 }
                 for(int i=9;i<Main.f.m.buttons.size();){
                     if(Main.f.m.buttons.get(i).isVisible()){
@@ -168,10 +251,6 @@ public class Task3 extends JFrame {
                             case  29: {p=1096; break;}
                             case  39: {p=1604; break;}
                         }
-                        if(Main.f.m.pktTest>p) {
-                            Main.f.m.buttons.get(i).setVisible(true);
-                            Main.f.m.buttons.get(i + 1).setEnabled(true);
-                        }
                     }
                     i=i+10;
                 }
@@ -183,22 +262,103 @@ public class Task3 extends JFrame {
             }
         });
 
+        //jak w Task1
+        hint1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                helpButton.doClick();
+                Task1.helpButton.doClick();
+                Task2.helpButton.doClick();
+                Menu.helper1--;
+                podpowiedz--;
+                Task2.podpowiedz--;
+                Task1.podpowiedz--;
+            }
+        });
+
+        //Ustawienie kafelki podpowiedz
+        hint2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int x = 10;
+                int k =x+135;
+                x=x+k;
+                for(int i =0;i<labels.size();i++){
+                    if(labels.get(correctAnswer.get(i)).getX()==x && labels.get(correctAnswer.get(i)).getY()==panel1.getY()+(panel1.getHeight()/2)){//Jeśli kafelka w dobrym miejscu
+
+                    }else {
+                        for(int j =i;j<labels.size();j++){//Czy inna zajmuje miejsce przeznaczone na poprawną
+                            if(labels.get(correctAnswer.get(j)).getX()==x&& labels.get(correctAnswer.get(j)).getY()==panel1.getY()+(panel1.getHeight()/2)){//Jelsi tak
+                                labels.get(correctAnswer.get(j)).setLocation(x1=x1+(k*j),d.height*3/5);//Wyrzucenie jej z panelu
+                            }//if
+                        }//for
+                        labels.get(correctAnswer.get(i)).setLocation(x,panel1.getY()+(panel1.getHeight()/2));//Dodanie na to miejsce poprawnej
+                        break;
+
+                    }//else
+                    x=x+k;
+                }
+                podpowiedz--;
+                Task2.podpowiedz--;
+                Task1.podpowiedz--;
+            }
+        });
+
+
+
+
+
+
+
+
+
+        //jak w Task1
+        helpButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                h=h-20;
+            }
+        });
+
+
+
+        if(test){
+            progres.setVisible(true);
+            fill();
+        }
+
+
 
     }//Task 3 kon
 
-
+    //Ustawienie labeli dodanych zgodznie z liczbą słów
     void AddLabels(int x1, Dimension d,int k){
+        ImageIcon wood=new ImageIcon(new ImageIcon(url3).getImage().getScaledInstance(190,100,Image.SCALE_AREA_AVERAGING));
         for(int i =0;i<labels.size();i++){
             labels.get(i).setSize(85, 30);
-            labels.get(i).setLocation(x1,d.height*3/5);
+            labels.get(i).setIcon(wood);
+            labels.get(i).setHorizontalTextPosition(SwingConstants.CENTER);
+            labels.get(i).setVerticalTextPosition(SwingConstants.CENTER);
             labels.get(i).setOpaque(true);
-            labels.get(i).setBackground(Color.WHITE);
+            labels.get(i).setLocation(x1,d.height*3/5);
             labels.get(i).addMouseMotionListener(slowaDragged);
             labels.get(i).addMouseListener(slowaPressed);
             labels.get(i).addMouseListener(slowaDrop);
+            labels.get(i).setAlignmentY(CENTER_ALIGNMENT);
+            labels.get(i).setAlignmentX(CENTER_ALIGNMENT);
+            labels.get(i).setHorizontalAlignment(SwingConstants.CENTER);
+            labels.get(i).setVerticalAlignment(SwingConstants.CENTER);
+            labels.get(i).setFont(new Font("Calibri",Font.BOLD,16));
+            labels.get(i).setForeground(Color.WHITE);
             tlo.add(labels.get(i));
             x1=x1+k;
         }
+        //Dodanie reszty elementów
+        tlo.add(label5);
+        tlo.add(sklep);
+        tlo.add(hint1);
+        tlo.add(hint2);
+        tlo.add(progres);
         tlo.add(sprawdzButton);
         tlo.add(infoButton);
         tlo.add(odpowiedzButton);
@@ -214,7 +374,7 @@ public class Task3 extends JFrame {
 
 
 
-
+    //**Drag and Drop labeli*
     MouseAdapter slowaDragged = new MouseAdapter() {
         @Override
         public void mouseDragged(MouseEvent e) {
@@ -235,7 +395,7 @@ public class Task3 extends JFrame {
             pointPressed = e.getPoint();
         }
     };
-
+    //**Drop i sprawdzenie czy Drop znalazł się wewnątrz panelu*
     MouseAdapter slowaDrop = new MouseAdapter() {
         @Override
         public void mouseReleased(MouseEvent e) {
@@ -245,14 +405,14 @@ public class Task3 extends JFrame {
             int k =x+135;
             boolean Allinpanel = false;
             boolean corect = false;
-            if(comp.getY()>panel1.getY() && comp.getY()<(panel1.getY()+panel1.getHeight())){
+            if(comp.getY()>panel1.getY() && comp.getY()<(panel1.getY()+panel1.getHeight())){//**Jeśłi wewnątrz panelu*
                 for(int i=0;i<labels.size();i++){
-                    if(labels.get(i).getY()>panel1.getY() && labels.get(i).getY()<(panel1.getY()+panel1.getHeight())){
-                        x=x+k;
+                    if(labels.get(i).getY()>panel1.getY() && labels.get(i).getY()<(panel1.getY()+panel1.getHeight())){//**Jeśli już jakieś są*
+                        x=x+k;//**ustawienie lokalizacji*
                     }
                 }
                 comp.setLocation(x,panel1.getY()+(panel1.getHeight()/2));
-                for(int j=0;j<labels.size();j++){
+                for(int j=0;j<labels.size();j++){//**Sprawdzenie czy wszystkie w panelu*
                     if(labels.get(j).getY()>panel1.getY() && labels.get(j).getY()<(panel1.getY()+panel1.getHeight())){
                         Allinpanel=true;
                     }else{
@@ -261,13 +421,13 @@ public class Task3 extends JFrame {
                     }
                 }
 
-                if (Allinpanel){
+                if (Allinpanel){//**Jeśli tak uaktywnienie sprawdzenia (Tylko w trakcie Testu)*
                     sprawdzButton.setEnabled(true);
                 }else{
                     sprawdzButton.setEnabled(false);
                 }
 
-
+                //**Sprawdzenie czy odpowiedz poprawna i czy wszystkie w panelu rózni sie od podobnej funkcji powyżej dlatego nie można ich połączyć*
                 for(int i =0;i<labels.size()-1;i++){
                     if(labels.get(correctAnswer.get(i)).getX()<labels.get(correctAnswer.get(i+1)).getX() && Allinpanel){
                         corect=true;
@@ -277,7 +437,7 @@ public class Task3 extends JFrame {
                     }
                 }
             }
-            if (corect){
+            if (corect){//**Jeśli poprawna odblokowuje przycisk następne*
                 nastepneButton.setEnabled(true);
             }else{
                 nastepneButton.setEnabled(false);
@@ -288,4 +448,47 @@ public class Task3 extends JFrame {
     };
 
 
-}
+
+    //**aktywacja timera tylko w trkacjie testu*
+    public void fill()
+    {
+        timer = new Timer();
+        timer.schedule(timerTask,0,1000);
+    }
+
+    TimerTask timerTask = new TimerTask() {
+        @Override
+        public void run() {
+            progres.setValue(h+1);
+            s= String.valueOf(60-h);
+            progres.setString(s);
+            h++;
+            if(h==50)
+                progres.setForeground(Color.RED);
+            if(progres.getValue()==progres.getMaximum()){
+                timer.cancel();
+                dispose();
+            }
+            if(Menu.helper1<1)
+                hint1.setEnabled(false);
+            if(Menu.helper4<1)
+                hint2.setEnabled(false);
+            if(podpowiedz<1) {
+                hint1.setEnabled(false);
+                hint2.setEnabled(false);
+            }
+
+
+        }
+    };
+    //**jak w Task1*
+    TimerTask Label5_task = new TimerTask() {
+        @Override
+        public void run() {
+            s= String.valueOf(Menu.monney);
+            label5.setText(s);
+        }
+    };
+
+
+}//Task3 class

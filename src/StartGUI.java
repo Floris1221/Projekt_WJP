@@ -1,14 +1,11 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.io.IOException;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
+
 
 public class StartGUI extends JFrame {
     URL url2 = getClass().getResource("/cloud.png");
@@ -23,13 +20,13 @@ public class StartGUI extends JFrame {
     private JLabel tlo = new JLabel();
     private JPanel panel1;
     private JPanel panel2;
-    URL url = getClass().getResource("/grass.jpg");
-    ImageIcon img = new ImageIcon(url);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    URL url = getClass().getResource("/Start.jpg");
+    ImageIcon img=new ImageIcon(new ImageIcon(url).getImage().getScaledInstance(d.width,d.height,Image.SCALE_AREA_AVERAGING));
     public Menu m;
 
-    StartGUI() {
+    StartGUI() {//Ogólne ustawienia okna i elementów
         super("Językomania");
-        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setSize(d);
@@ -75,11 +72,14 @@ public class StartGUI extends JFrame {
         this.add(tlo);
 
 
+
+        //Otworzenie poziomu I
         nowicjuszButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 m = new Menu();
                 m.pktTest=0;
+                Menu.odnos=0;
                 for(int i=1;i<m.buttons.size();i++){
                     m.buttons.get(i).setEnabled(false);
                 }
@@ -89,39 +89,74 @@ public class StartGUI extends JFrame {
 
 
 
+        //Otworzenie poziomu II
         początkującyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 m = new Menu();
                 m.pktTest=450;
+                Menu.odnos=450;
                 for(int i=11;i<m.buttons.size();i++){
                     m.buttons.get(i).setEnabled(false);
                 }
 
             }
         });
+        //Otworzenie poziomu III
         sredniozaawansowanyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 m = new Menu();
                 m.pktTest=900;
+                Menu.odnos=900;
                 for(int i=21;i<m.buttons.size();i++){
                     m.buttons.get(i).setEnabled(false);
                 }
             }
         });
+        //Otworzenie poziomu IV
         zaawansowanyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 m = new Menu();
                 m.pktTest=1350;
+                Menu.odnos=1350;
                 for(int i=31;i<m.buttons.size();i++){
                     m.buttons.get(i).setEnabled(false);
                 }
             }
         });
 
+        //Zmiana ikonki przycisków po najeździe
+        nowicjuszButton.addMouseListener(hover);
+        początkującyButton.addMouseListener(hover);
+        sredniozaawansowanyButton.addMouseListener(hover);
+        zaawansowanyButton.addMouseListener(hover);
+
+        nowicjuszButton.addMouseListener(hover_off);
+        początkującyButton.addMouseListener(hover_off);
+        sredniozaawansowanyButton.addMouseListener(hover_off);
+        zaawansowanyButton.addMouseListener(hover_off);
+
       
     }//StartGUI
+
+    MouseAdapter hover = new MouseAdapter() {
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            super.mouseEntered(e);
+            JButton button = (JButton) e.getSource();
+            button.setIcon(cloud_hover);
+        }
+    };
+    MouseAdapter hover_off = new MouseAdapter() {
+        @Override
+        public void mouseExited(MouseEvent e) {
+            super.mouseExited(e);
+            JButton button = (JButton) e.getSource();
+            button.setIcon(cloud);
+        }
+    };
+
 
 }//StartGUI class

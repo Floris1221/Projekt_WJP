@@ -44,15 +44,15 @@ public class Questions {
 
 
 
-
+//Odtworzenie pliku zawierającego pytania i przypisanie ich do tabeli
     Questions(){
         {
             try {
                 String line;
                 fr = new FileReader("Zadania.txt");
                 BufferedReader br = new BufferedReader(fr);
-                while((line=br.readLine()) != null){
-                    teksty[i]= line.split("\\.");
+                while((line=br.readLine()) != null){//Do momentu konca pliku
+                    teksty[i]= line.split("\\.");//przypisanie do tabeli
                     i++;
                 }
 

@@ -5,9 +5,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
+import java.sql.Time;
+import java.util.*;
+import java.util.Timer;
 
 public class Menu extends JFrame {
     URL url = getClass().getResource("/grass.jpg");
@@ -30,6 +30,8 @@ public class Menu extends JFrame {
     ImageIcon eight = new ImageIcon(url8);
     URL url9 = getClass().getResource("/nine.png");
     ImageIcon nine = new ImageIcon(url9);
+    URL url10 = getClass().getResource("/chest.png");
+    ImageIcon chest=new ImageIcon(new ImageIcon(url10).getImage().getScaledInstance(100,90,Image.SCALE_AREA_AVERAGING));
     ScrollablePicture picture = new ScrollablePicture(img,1);
     private JScrollPane panel = new JScrollPane(picture);
     private JButton button1 = new JButton(one);
@@ -73,16 +75,28 @@ public class Menu extends JFrame {
     private JButton button39 = new JButton(nine);
     private JButton button40 = new JButton("TEST");
     private JLabel tlo = new JLabel();
+    private JButton sklep = new JButton("SKLEP",chest);
     private JLabel label1 = new JLabel("POZIOM NOWICJUSZ");
     private JLabel label2 = new JLabel("POZIOM POCZĄTKUJĄCY");
     private JLabel label3 = new JLabel("POZIOM SREDNIOZAAWANSOWANY");
     private JLabel label4 = new JLabel("POZIOM ZAAWANSOWANY");
+    URL url15 = getClass().getResource("/coin.png");
+    ImageIcon coin=new ImageIcon(new ImageIcon(url15).getImage().getScaledInstance(70,50,Image.SCALE_AREA_AVERAGING));
+    private JLabel label5 = new JLabel(coin);
     ArrayList<JButton> buttons = new ArrayList<JButton>();
     int pktTest;
+    public static int odnos;
+    public static int h =0;
     static int monney = 0;
+    static int helper1=0;
+    static int helper2=0;
+    static int helper3=0;
+    static int helper4=0;
+    Timer timer = new Timer();
+    String s;
 
     Menu(){
-        super("Menu");
+        super("Menu");                      //Utworzenie ramki
         Main.f.dispose();
         buttons.addAll(Arrays.asList(button1,button2,button3,button4,button5,button6,button7,button8,button9,button10,button11,button12,button13,button14,button15,button16,button17,button18,button19,button20,button21,button22,button23,button24,button25,button26,button27,button28,button29,button30,button31,button32,button33,button34,button35,button36,button37,button38,button39,button40));
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -90,6 +104,11 @@ public class Menu extends JFrame {
         this.setResizable(false);
         this.setSize(d);
         this.setVisible(true);
+        timer.schedule(timerTask,0,500);
+
+
+
+        //Ustawienie przycisków uruchamiających zadania
         for(int i=0;i<buttons.size();i++){
             buttons.get(i).setSize(128,128);
             buttons.get(i).setContentAreaFilled(false);
@@ -97,6 +116,40 @@ public class Menu extends JFrame {
             buttons.get(i).setBorderPainted(false);
             picture.add(buttons.get(i));
         }
+
+
+
+        //Ustawienie Przycisków test
+        button10.setContentAreaFilled(true);
+        button10.setBorderPainted(true);
+        button10.setBackground(Color.cyan);
+        button10.setFont(new Font("Calibri",Font.BOLD,40));
+        button10.setForeground(Color.WHITE);
+        button10.setSize(150,90);
+
+        button20.setContentAreaFilled(true);
+        button20.setBorderPainted(true);
+        button20.setBackground(Color.cyan);
+        button20.setFont(new Font("Calibri",Font.BOLD,40));
+        button20.setForeground(Color.WHITE);
+        button20.setSize(150,90);
+
+        button30.setContentAreaFilled(true);
+        button30.setBorderPainted(true);
+        button30.setBackground(Color.cyan);
+        button30.setFont(new Font("Calibri",Font.BOLD,40));
+        button30.setForeground(Color.WHITE);
+        button30.setSize(150,90);
+
+        button40.setContentAreaFilled(true);
+        button40.setBorderPainted(true);
+        button40.setBackground(Color.cyan);
+        button40.setFont(new Font("Calibri",Font.BOLD,40));
+        button40.setForeground(Color.WHITE);
+        button40.setSize(150,90);
+
+
+        //Ustawienie lebeli
         int x = (d.width/3)/2;
         int y = 200;
         int i =0;
@@ -126,9 +179,34 @@ public class Menu extends JFrame {
         label4.setLocation(10,y+3200);
         label4.setForeground(Color.WHITE);
 
+        sklep.setSize(200,110);
+        sklep.setFont(new Font("Calibri",Font.BOLD,24));
+        sklep.setForeground(Color.YELLOW);
+        sklep.setHorizontalTextPosition(SwingConstants.CENTER);
+        sklep.setVerticalTextPosition(SwingConstants.BOTTOM);
+        sklep.setLocation(d.width-250,20);
+        sklep.setContentAreaFilled(false);
+        sklep.setFocusPainted(false);
+        sklep.setBorderPainted(false);
+
+
+        label5.setSize(200,110);
+        label5.setFont(new Font("Calibri",Font.BOLD,24));
+        label5.setForeground(Color.YELLOW);
+        label5.setLocation(sklep.getX()-200,20);
+
+        //Utworzenie sklepu
+        sklep.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Shop s = new Shop();
+            }
+        });
 
 
 
+
+        //Umiejscowiennie poziomów
         while(i<buttons.size()){
             buttons.get(i).setLocation(x,y);
             buttons.get(i+1).setLocation(x+(d.width/3),y+150);
@@ -148,6 +226,9 @@ public class Menu extends JFrame {
 
 
 
+
+        picture.add(label5);
+        picture.add(sklep);
         picture.add(label1);
         picture.add(label2);
         picture.add(label3);
@@ -168,44 +249,53 @@ public class Menu extends JFrame {
         {
             @Override
             public void actionPerformed(ActionEvent e)
-            {
+            {//Czy Test
                 boolean test;
                     if(button10.isVisible()){
                         test=false;
                     }else{
                         test=true;
                     }
+                    //Tworzenie Zadania i przypisanie jego elementom takim
+                    //Jak label i przyciski odpowiednich paramterów
                     Task1 task1 = new Task1(1,test);
                     task1.label1.setText(q.teksty[0][0]);
                     task1.label2.setText(q.teksty[0][1]);
+                    //Ustawienie przycisków w Task1
                     for(int i=0;i<task1.buttons.length;i++)
                     {
                         task1.buttons[i].setText(q.teksty[0][i+2]);
+                        //Przycisk z poprawną odpowiedzią
                         if(i+1==Integer.parseInt(q.teksty[0][6]))
                         {
                             task1.odpowiedz = q.teksty[0][i+2];
                             int finalI = i;
+                            //Jego Listener
                             task1.buttons[i].addActionListener(new ActionListener() {
                                 @Override
                                 public void actionPerformed(ActionEvent e) {
+                                    //Ustawia ikone i odblokowuje przycisk następne
                                     task1.nastepneButton.setEnabled(true);
                                     task1.buttons[finalI].setIcon(task1.yes);
+                                    //Jeśli Test Przypisanie punktów za odpowiedz
                                     if(task1.test){
                                         for(int j=0; j<task1.buttons.length; j++){
                                             task1.buttons[j].setEnabled(false);
                                         }
                                         pktTest = pktTest + 75;
-                                        monney = monney + 75;
+                                        monney = monney + 100;
+                                        Results.coins = Results.coins+100;
                                     }
                                 }
                             });
                         }
-                        else{
+                        else{//Błędne odpowiedzi
                             int finalI1 = i;
                             task1.buttons[i].addActionListener(new ActionListener() {
                                 @Override
                                 public void actionPerformed(ActionEvent e) {
                                     task1.buttons[finalI1].setIcon(task1.no);
+                                    //Jeśli test
                                     if(task1.test){
                                         for(int j=0; j<task1.buttons.length; j++){
                                             task1.buttons[j].setEnabled(false);
@@ -220,7 +310,7 @@ public class Menu extends JFrame {
                 }
         });
 
-        //Zad 2
+        //Zad 2             Task1
         button2.addActionListener(new ActionListener()
         {
             @Override
@@ -252,7 +342,8 @@ public class Menu extends JFrame {
                                             task1.buttons[j].setEnabled(false);
                                         }
                                         pktTest = pktTest + 75;
-                                        monney = monney + 75;
+                                        monney = monney + 100;
+                                        Results.coins = Results.coins+100;
                                     }
                                 }
                             });
@@ -277,7 +368,7 @@ public class Menu extends JFrame {
                 }
         });
 
-        //Zad 3
+        //Zad 3             Task1
         button3.addActionListener(new ActionListener()
         {
             @Override
@@ -309,7 +400,8 @@ public class Menu extends JFrame {
                                             task1.buttons[j].setEnabled(false);
                                         }
                                         pktTest = pktTest + 75;
-                                        monney = monney + 75;
+                                        monney = monney + 100;
+                                        Results.coins = Results.coins+100;
                                     }
                                 }
                             });
@@ -334,7 +426,7 @@ public class Menu extends JFrame {
                 }
         });
 
-        //Zad 4
+        //Zad 4             Task1
         button4.addActionListener(new ActionListener()
         {
             @Override
@@ -367,7 +459,8 @@ public class Menu extends JFrame {
                                         }
                                     }
                                     pktTest = pktTest + 75;
-                                    monney = monney + 75;
+                                    monney = monney + 100;
+                                    Results.coins = Results.coins+100;
                                 }
                             });
                         }
@@ -397,13 +490,15 @@ public class Menu extends JFrame {
         button5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //Czy test
                 boolean test;
                 if(button10.isVisible()){
                     test=false;
                 }else{
                     test=true;
-                }
+                }//Utworzenie okna
                     Task2 task2 = new Task2(5,test);
+                    //ustawienie parametró dla konkretnego zadania
                     task2.label1.setText(q.teksty[4][0]);
                     task2.label2.setText(q.teksty[4][1]);
                     task2.odp = q.teksty[4][2];
@@ -453,7 +548,7 @@ public class Menu extends JFrame {
             }
         });
 
-        //Zad 8
+        //Zad 8             Task1
         button8.addActionListener(new ActionListener()
         {
             @Override
@@ -485,7 +580,8 @@ public class Menu extends JFrame {
                                             task1.buttons[j].setEnabled(false);
                                         }
                                         pktTest = pktTest + 75;
-                                        monney = monney + 75;
+                                        monney = monney + 100;
+                                        Results.coins = Results.coins+100;
                                     }
                                 }
                             });
@@ -510,7 +606,7 @@ public class Menu extends JFrame {
                 }
         });
 
-        //Zad 9
+        //Zad 9             Task1
         button9.addActionListener(new ActionListener()
         {
             @Override
@@ -542,7 +638,8 @@ public class Menu extends JFrame {
                                             task1.buttons[j].setEnabled(false);
                                         }
                                         pktTest = pktTest + 75;
-                                        monney = monney + 75;
+                                        monney = monney + 100;
+                                        Results.coins = Results.coins+100;
                                     }
                                 }
                             });
@@ -571,6 +668,7 @@ public class Menu extends JFrame {
         button10.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //Wylosowanie 6 pytań z zadań z podanego poziomu
                 button10.setVisible(false);
                 int z,x,c,v,b,n;
                 boolean jest = false;
@@ -619,8 +717,8 @@ public class Menu extends JFrame {
                     else
                         jest = false;
                 }while(jest);
-
-                System.out.println(z+" "+x+" "+c+" "+v+" "+b+" "+n);
+                //Tabela wyników
+                Results results =new Results();
                 buttons.get(z).doClick();
                 buttons.get(x).doClick();
                 buttons.get(c).doClick();
@@ -647,6 +745,7 @@ public class Menu extends JFrame {
         button11.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //czy test
                 int nbol;
                     nbol = Integer.parseInt(q.teksty[10][2]);
                 boolean test;
@@ -654,7 +753,7 @@ public class Menu extends JFrame {
                     test=false;
                 }else{
                     test=true;
-                }
+                }//Utworzenie task3
                     Task3 task3 = new Task3(nbol+1,11,test);
                     task3.label1.setText(q.teksty[10][0]);
                     task3.label2.setText(q.teksty[10][1]);
@@ -662,13 +761,12 @@ public class Menu extends JFrame {
                         task3.labels.add(new JLabel(q.teksty[10][i+3]));
                         task3.correctAnswer.add(Integer.valueOf(q.teksty[10][i+4+nbol]));
                     }
-                    System.out.println(task3.labels.size());
                     task3.AddLabels(task3.x1,task3.d,task3.k);
 
                 }
         });
 
-        //Zad 2
+        //Zad 2             Task1
         button12.addActionListener(new ActionListener()
         {
             @Override
@@ -700,7 +798,8 @@ public class Menu extends JFrame {
                                             task1.buttons[j].setEnabled(false);
                                         }
                                         pktTest = pktTest + 75;
-                                        monney = monney + 75;
+                                        monney = monney + 100;
+                                        Results.coins = Results.coins+100;
                                     }
                                 }
                             });
@@ -840,7 +939,7 @@ public class Menu extends JFrame {
                 }
         });
 
-        //Zad 8
+        //Zad 8             Task1
         button18.addActionListener(new ActionListener()
         {
             @Override
@@ -872,7 +971,8 @@ public class Menu extends JFrame {
                                             task1.buttons[j].setEnabled(false);
                                         }
                                         pktTest = pktTest + 75;
-                                        monney = monney + 75;
+                                        monney = monney + 100;
+                                        Results.coins = Results.coins+100;
                                     }
                                 }
                             });
@@ -970,7 +1070,7 @@ public class Menu extends JFrame {
                         jest = false;
                 }while(jest);
 
-                System.out.println(z+" "+x+" "+c+" "+v+" "+b+" "+n);
+                Results results =new Results();
                 buttons.get(z).doClick();
                 buttons.get(x).doClick();
                 buttons.get(c).doClick();
@@ -985,6 +1085,20 @@ public class Menu extends JFrame {
         /////////////////////////////////////SREDNIOZAAWANSOWANY//////////////////////////////
 
 
-    }
+    }//Menu kon
 
-}
+
+
+
+    TimerTask timerTask = new TimerTask() {
+        @Override
+        public void run() {
+            s= String.valueOf(monney);
+            label5.setText(s);
+        }
+    };
+
+
+
+
+}// Menu class

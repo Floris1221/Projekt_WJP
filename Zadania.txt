@@ -1,5 +1,5 @@
 Zadanie 1.Vollayball.Śiatkówka.Piłka nożna.Koszykówka.Jazda rowerem.1.
-Zadanie 2.Telefon.Pappeer.Mail.Phone.Printer.3.
+Zadanie 2.Telefon.Paper.Mail.Phone.Printer.3.
 Zadanie 3.Powtarzać.Sleep.Drink.Pay.Repeat.4.
 Zadanie 4.Miły.Kind.Beautiful.Wicked.Soft.1.
 Zadanie 5.Usta.mouth.
@@ -8,13 +8,13 @@ Zadanie 7.Ręka.arm.
 Zadanie 8.What sports do you ____ in your free time?.go.do.have.take.2.
 Zadanie 9.You need a ____ to play table tenic.bat.racket.stick.ball.2.
 Test.
-Zadanie 1.Waga.5.h.w.g.i.t.e.1.5.3.2.0.4.
+Zadanie 1.Waga.5.h.W.g.i.t.e.1.5.3.2.0.4.
 Zadanie 2.You _____ be 18 to drive.were allowed to.can.have to.may.3.
 Zadanie 3.Mark said he mieszkał in a big city.lived.
 Zadanie 4.Muszę iść do sklepu.4.must.i.go.shop.to.1.0.2.4.3.
-Zadanie 5. .6.are.trees.the.There.garden.in.many.3.0.6.1.5.2.4.
+Zadanie 5.Tutaj jest dużo drzew w ogrodzie.6.are.trees.the.There.garden.in.many.3.0.6.1.5.2.4.
 Zadanie 6.They said they słuchali to music then.were listening.
-Zadanie 7. .4.wanted.really.to.help.i.4.1.0.2.3.
+Zadanie 7.Naprawdę chciałem pomóc .4.wanted.really.to.help.i.4.1.0.2.3.
 Zadanie 8.I think you ____ visit your grandma more often.should.have to.must.can.1.
 Zadanie 9.Widelec.fork.
 
